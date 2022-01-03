@@ -41,6 +41,7 @@ class SudokuPuzzlesDatabase {
       ${SudokuPuzzleField.variation} $textType $notNull,
       ${SudokuPuzzleField.initialBoard} $textType $notNull $unique,
       ${SudokuPuzzleField.savedBoard} $textType $notNull,
+      ${SudokuPuzzleField.savedNotes} $textType $notNull,
       ${SudokuPuzzleField.solution} $textType $notNull,
       ${SudokuPuzzleField.difficulty} $doubleType,
       ${SudokuPuzzleField.hasWon} $intType $notNull)

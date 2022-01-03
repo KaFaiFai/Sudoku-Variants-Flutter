@@ -5,12 +5,26 @@ import '../utility_function.dart';
 
 final sudokuClassicPuzzle = [
   SudokuPuzzle(
-    initialBoard: SudokuBoard.fromString("1..5.37..6.3..8.9......98...1...."
-        "...8761..........6...........7.8.9.76.47...6.312"),
-    solution: SudokuBoard.fromString("19854372664327859152761984391473526887"
-        "6192435235486179462351987381927654759864312"),
+    initialBoard: SudokuBoard.fromString(".9.3.8.1."
+        "3.......5"
+        ".6..5..3."
+        "..47.53.."
+        "5.2...9.1"
+        "..89.27.."
+        ".2..6..4."
+        "8.......3"
+        ".5.1.4.6."),
+    solution: SudokuBoard.fromString("495378612"
+        "381296475"
+        "267451839"
+        "914785326"
+        "572643981"
+        "638912754"
+        "523869547"
+        "846527193"
+        "759134268"),
     variation: SudokuVariation.classic,
-    difficulty: 2.2,
+    difficulty: 3.0,
   ),
   SudokuPuzzle(
     initialBoard: SudokuBoard.fromString("38.1.........5.6.....9....3.4...."
@@ -117,7 +131,9 @@ String Function(String) boardRandomizer(
   if (randSymbols) symbols.shuffle();
   print(symbols);
   if (randRows) rows.shuffle();
+  print(rows);
   if (randCols) cols.shuffle();
+  print(cols);
 
   return (board) {
     var board2D = board
@@ -141,23 +157,23 @@ String Function(String) boardRandomizer(
 
 void main(List<String> args) {
   var rand = boardRandomizer(randRows: false, randCols: false);
-  rand("2....8..."
-      ".5....2.."
-      "..7....9."
-      "...3....9"
-      "....4...."
-      "3....1..."
-      ".1....5.."
-      "..4....1."
-      "...5....2");
+  rand(".4.7.5.8."
+      "7.......9"
+      ".1..9..7."
+      "..23.97.."
+      "9.6...4.8"
+      "..54.63.."
+      ".6..1..2."
+      "5.......7"
+      ".9.8.2.1.");
   print('\n');
-  rand("293158467"
-      "651497238"
-      "487632195"
-      "148325679"
-      "765849321"
-      "329761854"
-      "812976543"
-      "574283916"
-      "936514782");
+  rand("249735186"
+      "758641239"
+      "613298574"
+      "482359761"
+      "936127458"
+      "175486392"
+      "967514923"
+      "521963847"
+      "394872615");
 }

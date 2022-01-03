@@ -19,6 +19,27 @@ extension SplitString on String {
   }
 }
 
+extension SplitList<T> on List<T> {
+  List<List<T>> splitByLength(int length) {
+    if (length == 0) throw Exception("Split By Length 0");
+
+    List<List<T>> partition = [];
+    int i = 0;
+    length = length > 0 ? length : -length;
+
+    while ((i + 1) * length < this.length) {
+      partition.add(sublist(i * length, (i + 1) * length));
+
+      i++;
+    }
+    if (i * length != this.length) {
+      partition.add(sublist(i * length));
+    }
+
+    return partition;
+  }
+}
+
 extension CheckDuplicates on List {
   bool isUnique() {
     final list = this;

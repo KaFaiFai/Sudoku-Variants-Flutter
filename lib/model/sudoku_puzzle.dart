@@ -9,6 +9,7 @@ class SudokuPuzzleField {
     variation,
     initialBoard,
     savedBoard,
+    savedNotes,
     solution,
     difficulty,
     hasWon,
@@ -18,6 +19,7 @@ class SudokuPuzzleField {
   static const String variation = 'variation';
   static const String initialBoard = 'initialBoard';
   static const String savedBoard = 'savedBoard';
+  static const String savedNotes = 'savedNotes';
   static const String solution = 'solution';
   static const String difficulty = 'difficulty';
   static const String hasWon = 'hasWon';
@@ -71,7 +73,8 @@ class SudokuPuzzle {
         initialBoard: SudokuBoard.fromString(
             json[SudokuPuzzleField.initialBoard] as String),
         savedBoard: SudokuBoard.fromString(
-            json[SudokuPuzzleField.savedBoard] as String),
+            json[SudokuPuzzleField.savedBoard] as String,
+            json[SudokuPuzzleField.savedNotes] as String),
         solution:
             SudokuBoard.fromString(json[SudokuPuzzleField.solution] as String),
         difficulty: json[SudokuPuzzleField.difficulty] as double?,
@@ -81,9 +84,10 @@ class SudokuPuzzle {
   Map<String, Object?> toJson() => {
         SudokuPuzzleField.id: id,
         SudokuPuzzleField.variation: variation.text,
-        SudokuPuzzleField.initialBoard: initialBoard.toJson(),
-        SudokuPuzzleField.savedBoard: savedBoard?.toJson() ?? "",
-        SudokuPuzzleField.solution: solution.toJson(),
+        SudokuPuzzleField.initialBoard: initialBoard.boardToJson(),
+        SudokuPuzzleField.savedBoard: savedBoard?.boardToJson() ?? "",
+        SudokuPuzzleField.savedNotes: savedBoard?.notesToJson() ?? "",
+        SudokuPuzzleField.solution: solution.boardToJson(),
         SudokuPuzzleField.difficulty: difficulty,
         SudokuPuzzleField.hasWon: hasWon ? 1 : 0,
       };

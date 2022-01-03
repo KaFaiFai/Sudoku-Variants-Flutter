@@ -10,24 +10,36 @@ class SudokuBoard {
   List<List<SudokuSymbol>> _board = [];
   List<List<Set<SudokuSymbol>>> _notesBoard = [];
 
-  SudokuBoard(List<List<SudokuSymbol>> board) {
+  SudokuBoard(List<List<SudokuSymbol>> board,
+      [List<List<Set<SudokuSymbol>>>? notes]) {
     this.board = board;
-    _notesBoard = List.generate(
-      numberOfRows,
-      (i) => List.generate(numberOfColumns, (j) => {}),
-    );
+    notesBoard = notes ?? [[]];
   }
 
-  SudokuBoard.from2DString(List<List<String>> board)
-      : this(board
-            .map((row) => row.map((s) => SudokuSymbols.from(s)).toList())
-            .toList());
+  SudokuBoard.fromString(String board, [String? notes]) {
+    this.board = board
+        .splitByLength(numberOfColumns)
+        .map((sub) =>
+            sub.splitByLength(1).map((e) => SudokuSymbols.from(e)).toList())
+        .toList()
+        .toList();
 
-  SudokuBoard.fromString(String board)
-      : this.from2DString(board
-            .splitByLength(numberOfColumns)
-            .map((sub) => sub.splitByLength(1))
-            .toList());
+    if (notes != null) {
+      notesBoard = notes
+          .split(",")
+          .splitByLength(numberOfColumns)
+          .map((row) => row
+              .map((s) =>
+                  s.splitByLength(1).map((e) => SudokuSymbols.from(e)).toSet())
+              .toList())
+          .toList();
+    } else {
+      notesBoard = List.generate(
+        numberOfRows,
+        (i) => List.generate(numberOfColumns, (j) => {}),
+      );
+    }
+  }
 
   SudokuBoard.empty() : this([]);
 
@@ -50,6 +62,24 @@ class SudokuBoard {
     );
 
     _board = newBoard;
+  }
+
+  set notesBoard(List<List<Set<SudokuSymbol>>> notesBoard) {
+    final List<List<Set<SudokuSymbol>>> newNotesBoard = List.generate(
+      numberOfRows,
+      (i) => List.generate(
+        numberOfColumns,
+        (j) {
+          if (notesBoard.length > i && notesBoard[i].length > j) {
+            return notesBoard[i][j];
+          } else {
+            return {};
+          }
+        },
+      ),
+    );
+
+    _notesBoard = newNotesBoard;
   }
 
   void updateCell(int row, int col, SudokuSymbol symbol) {
@@ -121,7 +151,11 @@ class SudokuBoard {
     }
   }
 
-  String toJson() => _board.map((row) => row.map((s) => s.text).join()).join();
+  String boardToJson() =>
+      _board.map((row) => row.map((s) => s.text).join()).join();
+  String notesToJson() => _notesBoard
+      .map((row) => row.map((s) => s.map((e) => e.text).join()).join(','))
+      .join(',');
 
-  SudokuBoard copy() => SudokuBoard(_board);
+  SudokuBoard copy() => SudokuBoard(_board, _notesBoard);
 }
