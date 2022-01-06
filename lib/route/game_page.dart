@@ -36,10 +36,10 @@ class _GamePageState extends State<GamePage> {
     return Scaffold(
       appBar: AppBar(
         leading: TextButton(
-          child: const Icon(Icons.arrow_back, color: TERTIARY_COLOR),
+          child: Icon(Icons.arrow_back, color: TERTIARY_COLOR[50]),
           onPressed: () => _uiListener.toSelectPage(Navigator.of(context).pop),
         ),
-        title: const Text('Sudoku Game'),
+        backgroundColor: PRIMARY_COLOR[900],
         elevation: 0,
       ),
       body: Center(
@@ -59,8 +59,8 @@ class _GamePageState extends State<GamePage> {
                   ],
                   selectedSymbol: boardState.currentSymbol,
                   subboardLength:
-                      (MediaQuery.of(context).size.width - SMALL_MARGIN * 2) /
-                          3.2,
+                      (MediaQuery.of(context).size.width - SMALL_MARGIN * 2 - 10) /
+                          3,
                   onEnd: _uiListener.completeTransition,
                   onPress: (r, c) {
                     boardState.selectCell(r, c);

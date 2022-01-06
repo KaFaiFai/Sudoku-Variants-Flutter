@@ -11,7 +11,11 @@ class VariationSelectPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Sudoku Variation"), elevation: 0),
+      appBar: AppBar(
+        title: const Text("Select a variant"),
+        backgroundColor: PRIMARY_COLOR[900],
+        elevation: 0,
+      ),
       body: Center(
         child: Column(
           children: _allVariations

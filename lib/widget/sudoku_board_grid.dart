@@ -92,17 +92,17 @@ class _SudokuBoardGridState extends State<SudokuBoardGrid> {
   Widget itemBuilder(int row, int col, double subboardLength) {
     const int count = SudokuBoard.numberOfPartialColumns;
     if ((row == 1 || row == 3) && (col == 1 || col == 3)) {
-      return Container(height: 3, width: 3);
+      return Container(height: 3, width: 3, color: PRIMARY_COLOR[300]!);
     } else if (row == 1 || row == 3) {
       return Container(
-          height: 3, width: subboardLength - 2, color: PRIMARY_COLOR[300]!);
+          height: 3, width: subboardLength - 0, color: PRIMARY_COLOR[300]!);
     } else if (col == 1 || col == 3) {
       return Container(
-          height: subboardLength - 2, width: 3, color: PRIMARY_COLOR[300]!);
+          height: subboardLength - 0, width: 3, color: PRIMARY_COLOR[300]!);
     }
     int num = (row / 2).floor() * count + (col / 2).floor();
     return SudokuBoardSubgrid(
-      length: subboardLength / 3.3,
+      length: subboardLength / 3.4,
       subboard: widget.currentBoard.subboard1D(num),
       notesSubboard: widget.currentBoard.notesSubboard1D(num),
       onPress: (j) =>

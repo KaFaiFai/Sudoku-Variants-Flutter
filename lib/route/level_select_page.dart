@@ -39,7 +39,11 @@ class _LevelSelectPageState extends State<LevelSelectPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Sudoku Level'), elevation: 0),
+      appBar: AppBar(
+        title: const Text('Choose a level'),
+        backgroundColor: PRIMARY_COLOR[900],
+        elevation: 0,
+      ),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
           : Consumer<UIState>(
@@ -47,9 +51,9 @@ class _LevelSelectPageState extends State<LevelSelectPage>
                 puzzles: _puzzles,
                 gridMargin: uiState.currentGridMargin,
                 infoOpacity: uiState.currentInfoOpacity,
-                subboardLength: (MediaQuery.of(context).size.width -
-                        LARGE_MARGIN * 2) /
-                    3.2,
+                subboardLength:
+                    (MediaQuery.of(context).size.width - LARGE_MARGIN * 2 - 10) /
+                        3,
                 onTap: (_) => uiState.toGamePage(),
                 onAnimationEnd: (puzzle) {
                   if (uiState.currentPage == RouteGenerator.gamePage) {
