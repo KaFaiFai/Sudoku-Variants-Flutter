@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
           primaryColor: PRIMARY_COLOR[900],
           colorScheme: const ColorScheme.dark(secondary: CONTRAST_COLOR),
           scaffoldBackgroundColor: PRIMARY_COLOR[900],
+          fontFamily: "Raleway",
         ),
         onGenerateTitle: (_) => "Sudoku Game",
         initialRoute: RouteGenerator.homePage,

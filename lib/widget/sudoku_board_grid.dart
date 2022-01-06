@@ -95,10 +95,10 @@ class _SudokuBoardGridState extends State<SudokuBoardGrid> {
       return Container(height: 3, width: 3, color: PRIMARY_COLOR[300]!);
     } else if (row == 1 || row == 3) {
       return Container(
-          height: 3, width: subboardLength - 0, color: PRIMARY_COLOR[300]!);
+          height: 3, width: subboardLength, color: PRIMARY_COLOR[300]!);
     } else if (col == 1 || col == 3) {
       return Container(
-          height: subboardLength - 0, width: 3, color: PRIMARY_COLOR[300]!);
+          height: subboardLength, width: 3, color: PRIMARY_COLOR[300]!);
     }
     int num = (row / 2).floor() * count + (col / 2).floor();
     return SudokuBoardSubgrid(

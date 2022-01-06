@@ -37,6 +37,17 @@ class HomePage extends StatelessWidget {
                     .pushNamed(RouteGenerator.variationSelectPage);
               },
             ),
+            SimpleButton(
+              child: Text(
+                "Test",
+                style: TextStyle(color: TERTIARY_COLOR[50]!),
+              ),
+              border: Border.all(width: 1, color: TERTIARY_COLOR[50]!),
+              backgroundColor: PRIMARY_COLOR[900],
+              highlightColor: CONTRAST_COLOR,
+              onTap: () => Navigator.of(context)
+                  .pushNamed(RouteGenerator.testPage),
+            ),
           ],
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         ),
