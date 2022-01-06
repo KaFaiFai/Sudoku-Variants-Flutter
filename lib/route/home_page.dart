@@ -37,31 +37,6 @@ class HomePage extends StatelessWidget {
                     .pushNamed(RouteGenerator.variationSelectPage);
               },
             ),
-            /*ElevatedButton(
-              child: const Text("Start"),
-              onPressed: () => Navigator.of(context)
-                  .pushNamed(RouteGenerator.variationSelectPage),
-            ),
-            ElevatedButton(
-              child: const Text("Test"),
-              onPressed: () =>
-                  Navigator.of(context).pushNamed(RouteGenerator.testPage),
-            ),*/
-            SimpleButton(
-              child: Text(
-                "Load Puzzle",
-                style: TextStyle(color: TERTIARY_COLOR[50]!),
-              ),
-              border: Border.all(width: 1, color: TERTIARY_COLOR[50]!),
-              backgroundColor: PRIMARY_COLOR[900],
-              highlightColor: CONTRAST_COLOR,
-              onTap: () async {
-                for (var puzzle
-                    in sudokuClassicPuzzle + sudokuAntiKnightPuzzle) {
-                  await sudokuPuzzleRepo.insert(puzzle);
-                }
-              },
-            ),
           ],
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         ),

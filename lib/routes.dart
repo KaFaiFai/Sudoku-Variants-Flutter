@@ -20,13 +20,30 @@ class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case homePage:
-        return MaterialPageRoute(builder: (_) => HomePage());
+        return PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (_, __, ___) => HomePage(),
+          transitionsBuilder: (_, a, __, c) =>
+              FadeTransition(opacity: a, child: c),
+          transitionDuration: TRANSITION_DURATION,
+        );
       case variationSelectPage:
-        return MaterialPageRoute(builder: (_) => VariationSelectPage());
+        return PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (_, __, ___) => VariationSelectPage(),
+          transitionsBuilder: (_, a, __, c) =>
+              FadeTransition(opacity: a, child: c),
+          transitionDuration: TRANSITION_DURATION,
+        );
       case levelSelectPage:
-        return MaterialPageRoute(
-            builder: (_) => LevelSelectPage(
-                variation: settings.arguments as SudokuVariation));
+        return PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (_, __, ___) =>
+              LevelSelectPage(variation: settings.arguments as SudokuVariation),
+          transitionsBuilder: (_, a, __, c) =>
+              FadeTransition(opacity: a, child: c),
+          transitionDuration: TRANSITION_DURATION,
+        );
       case gamePage:
         return PageRouteBuilder(
           settings: settings,
