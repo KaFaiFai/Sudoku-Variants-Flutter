@@ -24,7 +24,7 @@ final sudokuClassicPuzzle = [
         "846527193"
         "759134268"),
     variation: SudokuVariation.classic,
-    difficulty: 3.0,
+    difficulty: 1.6,
   ),
   SudokuPuzzle(
     initialBoard: SudokuBoard.fromString("..1..2.7."
@@ -46,7 +46,7 @@ final sudokuClassicPuzzle = [
         "715428396"
         "482396517"),
     variation: SudokuVariation.classic,
-    difficulty: 4.0,
+    difficulty: 3.8,
   ),
   SudokuPuzzle(
     initialBoard: SudokuBoard.fromString("7.8......"
@@ -68,7 +68,7 @@ final sudokuClassicPuzzle = [
         "195762843"
         "346985271"),
     variation: SudokuVariation.classic,
-    difficulty: 4.0,
+    difficulty: 2.3,
   ),
 ];
 
@@ -93,7 +93,7 @@ final sudokuAntiKnightPuzzle = [
         "792548613"
         "561293847"),
     variation: SudokuVariation.antiKnight,
-    difficulty: 2.0,
+    difficulty: 1.2,
   ),
   SudokuPuzzle(
     initialBoard: SudokuBoard.fromString("7....1..."
@@ -115,29 +115,29 @@ final sudokuAntiKnightPuzzle = [
         "986713542"
         "532946817"),
     variation: SudokuVariation.antiKnight,
-    difficulty: 5.0,
+    difficulty: 4.8,
   ),
   SudokuPuzzle(
-    initialBoard: SudokuBoard.fromString("7.......4"
-        "..3...1.."
+    initialBoard: SudokuBoard.fromString("1.......2"
+        "..5...6.."
+        "8.......9"
         "........."
         "........."
-        ".1....7.8"
-        "6.1...7.8"
-        ".7.....2."
-        "..9...8.."
-        ".3.5.8.7."),
-    solution: SudokuBoard.fromString("715389264"
-        "983462157"
-        "264157389"
-        "347815692"
-        "892746513"
-        "651293748"
-        "578931426"
-        "129674835"
-        "436528971"),
+        "7.6...1.4"
+        ".1.....8."
+        "..9...4.."
+        ".5.3.4.1."),
+    solution: SudokuBoard.fromString("163549872"
+        "945278631"
+        "872631549"
+        "521463798"
+        "498127365"
+        "736895124"
+        "314956287"
+        "689712453"
+        "257384916"),
     variation: SudokuVariation.antiKnight,
-    difficulty: 4.0,
+    difficulty: 4.3,
   ),
 ];
 
@@ -177,9 +177,9 @@ void main(List<String> args) {
   var rand = boardRandomizer(randRows: false, randCols: false);
   rand("3.......6"
       "..1...4.."
+      "5.......2"
       "........."
       "........."
-      ".4....3.9"
       "8.4...3.9"
       ".3.....5."
       "..2...9.."
