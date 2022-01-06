@@ -35,10 +35,33 @@ class _GamePageState extends State<GamePage> {
 
     return Scaffold(
       appBar: AppBar(
-        leading: TextButton(
-          child: Icon(Icons.arrow_back, color: TERTIARY_COLOR[50]),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
           onPressed: () => _uiListener.toSelectPage(Navigator.of(context).pop),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.info),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: Text(widget.puzzle.variation.rule.title),
+                  content: Text(
+                    widget.puzzle.variation.rule.description,
+                    style: const TextStyle(height: 1.5),
+                  ),
+                  actions: <Widget>[
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text('OK'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ],
         backgroundColor: PRIMARY_COLOR[900],
         elevation: 0,
       ),
@@ -58,9 +81,10 @@ class _GamePageState extends State<GamePage> {
                     boardState.currentColumn
                   ],
                   selectedSymbol: boardState.currentSymbol,
-                  subboardLength:
-                      (MediaQuery.of(context).size.width - SMALL_MARGIN * 2 - 10) /
-                          3,
+                  subboardLength: (MediaQuery.of(context).size.width -
+                          SMALL_MARGIN * 2 -
+                          10) /
+                      3,
                   onEnd: _uiListener.completeTransition,
                   onPress: (r, c) {
                     boardState.selectCell(r, c);

@@ -8,14 +8,17 @@ class SudokuRule {
   static const numberOfColumns = 9;
   static const numberOfPartialColumns = 3;
 
+  final String title;
   final String description;
   final List<List<int>> Function(int? row, int? col) hintCells;
   final bool Function(SudokuBoard?) hasWon;
 
-  const SudokuRule(
-      {required this.description,
-      required this.hintCells,
-      required this.hasWon});
+  const SudokuRule({
+    required this.title,
+    required this.description,
+    required this.hintCells,
+    required this.hasWon,
+  });
 
   static bool isCompleted(SudokuBoard? board) {
     if (board == null) return false;
@@ -35,7 +38,9 @@ class SudokuRule {
 }
 
 final classicRule = SudokuRule(
-  description: "classic sudoku",
+  title: "Classic Sudoku",
+  description: "Each column, row and 3×3 outlined box "
+      "contains digits from 1 to 9 without repetition.",
   hintCells: (int? row, int? col) {
     if (row == null || col == null) return [];
 
@@ -88,7 +93,7 @@ final classicRule = SudokuRule(
   },
 );
 
-const knightMoves = [
+const _knightMoves = [
   [1, 2],
   [2, 1],
   [-1, 2],
@@ -100,13 +105,15 @@ const knightMoves = [
 ];
 
 final antiKnightRule = SudokuRule(
-  description: "anti-knight sudoku",
+  title: "Anti-knight Sudoku",
+  description: "Classic sudoku rules apply.\nIn addition, no two cells that "
+      "are a Knight's move apart, as in chess, can have the same digit",
   hintCells: (int? row, int? col) {
     if (row == null || col == null) return [];
 
     final classicCells = classicRule.hintCells(row, col);
-    final knightCells = List.generate(knightMoves.length,
-        (i) => [row + knightMoves[i][0], col + knightMoves[i][1]]);
+    final knightCells = List.generate(_knightMoves.length,
+        (i) => [row + _knightMoves[i][0], col + _knightMoves[i][1]]);
     return classicCells + knightCells;
   },
   hasWon: (sudokuBoard) {
@@ -120,12 +127,12 @@ final antiKnightRule = SudokuRule(
         print("hello");
 
         final currentCell = board[i][j];
-        for (int k = 0; k < knightMoves.length; k++) {
+        for (int k = 0; k < _knightMoves.length; k++) {
           if (SudokuRule.includeCell(
-              i + knightMoves[k][0], j + knightMoves[k][1])) {
+              i + _knightMoves[k][0], j + _knightMoves[k][1])) {
             print("hello");
             final knightCell =
-                board[i + knightMoves[k][0]][j + knightMoves[k][1]];
+                board[i + _knightMoves[k][0]][j + _knightMoves[k][1]];
             if (currentCell == knightCell) {
               print("Win condition failed: knight move at cell ($i, $j)");
               return false;

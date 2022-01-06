@@ -38,9 +38,35 @@ class _LevelSelectPageState extends State<LevelSelectPage>
 
   @override
   Widget build(BuildContext context) {
+    final _uiListener = Provider.of<UIState>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Choose a level'),
+        actions: [
+          if (widget.variation != null)
+            IconButton(
+              icon: const Icon(Icons.info),
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text(widget.variation!.rule.title),
+                    content: Text(
+                      widget.variation!.rule.description,
+                      style: const TextStyle(height: 1.5),
+                    ),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: const Text('OK'),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+        ],
         backgroundColor: PRIMARY_COLOR[900],
         elevation: 0,
       ),
@@ -51,15 +77,19 @@ class _LevelSelectPageState extends State<LevelSelectPage>
                 puzzles: _puzzles,
                 gridMargin: uiState.currentGridMargin,
                 infoOpacity: uiState.currentInfoOpacity,
-                subboardLength:
-                    (MediaQuery.of(context).size.width - LARGE_MARGIN * 2 - 10) /
-                        3,
+                subboardLength: (MediaQuery.of(context).size.width -
+                        LARGE_MARGIN * 2 -
+                        10) /
+                    3,
                 onTap: (_) => uiState.toGamePage(),
                 onAnimationEnd: (puzzle) {
                   if (uiState.currentPage == RouteGenerator.gamePage) {
                     Navigator.of(context)
                         .pushNamed(RouteGenerator.gamePage, arguments: puzzle)
-                        .then((_) => refreshSudokuPuzzles());
+                        .then((_) {
+                      refreshSudokuPuzzles();
+                      _uiListener.toSelectPage();
+                    });
                   }
                   uiState.completeTransition();
                 },
