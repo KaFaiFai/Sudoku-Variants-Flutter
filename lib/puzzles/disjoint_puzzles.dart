@@ -25,4 +25,26 @@ final sudokuDisjointPuzzle = [
     variation: SudokuVariation.disjoint,
     difficulty: 2.5,
   ),
+  SudokuPuzzle(
+    initialBoard: SudokuBoard.fromString("8.4...9.."
+        ".6.1....."
+        "7...8.1.3"
+        ".7...5..."
+        "..6...7.."
+        "...6...3."
+        "6.1.4...9"
+        ".....9.1."
+        "..9...8.4"),
+    solution: SudokuBoard.fromString("814523967"
+        "963174285"
+        "725986143"
+        "178235496"
+        "536498721"
+        "492617538"
+        "681742359"
+        "347859612"
+        "259361874"),
+    variation: SudokuVariation.disjoint,
+    difficulty: 3.7,
+  ),
 ];

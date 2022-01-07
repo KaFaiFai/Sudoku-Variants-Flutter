@@ -23,6 +23,28 @@ final sudokuDiagonalPuzzle = [
         "432165897"
         "195738462"),
     variation: SudokuVariation.diagonal,
-    difficulty: 2.2,
+    difficulty: 3.3,
+  ),
+  SudokuPuzzle(
+    initialBoard: SudokuBoard.fromString(".6.....5."
+        "8...5...6"
+        "...6.1..."
+        ".45...78."
+        "........."
+        ".27...14."
+        "...9.8..."
+        "2...3...1"
+        ".9.....3."),
+    solution: SudokuBoard.fromString("164372859"
+        "872459316"
+        "539681274"
+        "945216783"
+        "381547692"
+        "627893145"
+        "413968527"
+        "258734961"
+        "796125438"),
+    variation: SudokuVariation.diagonal,
+    difficulty: 5.0,
   ),
 ];
