@@ -1,16 +1,14 @@
-# sudoku_variants
+# Sudoku Variants
 
-A new Flutter project.
+Challenging puzzles of Sudoku and its variants, made using Flutter
 
-## Getting Started
+## Details
 
-This project is a starting point for a Flutter application.
+Sudoku Variants. Classic Sudoku and 3 other variants which have different sets of challenging rules. Enjoy the beauty of these puzzles!
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Features:
+ - 4 modes: classic, anti-knight, disjoint and diagonal
+ - Highlighted cells corresponding to the selected cell and rule of the puzzle
+ - Difficulty rating of each puzzle
+ - All progress are saved automatically
+ - Clean design to let you focus on solving the puzzle!

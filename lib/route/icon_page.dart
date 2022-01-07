@@ -10,10 +10,10 @@ class IconPage extends StatefulWidget {
 
 class _IconPageState extends State<IconPage> {
   final widthLength = 8.0;
+  final margin = 50.0;
 
   @override
   Widget build(BuildContext context) {
-    final margin = 50.0;
     final subboardLength =
         (MediaQuery.of(context).size.width - (margin + widthLength) * 2 - 4) /
             3;
