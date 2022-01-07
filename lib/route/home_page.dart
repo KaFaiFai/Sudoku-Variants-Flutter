@@ -29,9 +29,10 @@ class HomePage extends StatelessWidget {
               backgroundColor: PRIMARY_COLOR[900],
               highlightColor: CONTRAST_COLOR,
               onTap: () async {
-                for (var puzzle
-                    in sudokuClassicPuzzle + sudokuAntiKnightPuzzle) {
-                  await sudokuPuzzleRepo.insert(puzzle);
+                for (var variants in allSudokuPuzzles) {
+                  for (var puzzle in variants) {
+                    await sudokuPuzzleRepo.insert(puzzle);
+                  }
                 }
                 Navigator.of(context)
                     .pushNamed(RouteGenerator.variationSelectPage);
@@ -39,14 +40,14 @@ class HomePage extends StatelessWidget {
             ),
             SimpleButton(
               child: Text(
-                "Test",
+                "icon",
                 style: TextStyle(color: TERTIARY_COLOR[50]!),
               ),
               border: Border.all(width: 1, color: TERTIARY_COLOR[50]!),
               backgroundColor: PRIMARY_COLOR[900],
               highlightColor: CONTRAST_COLOR,
               onTap: () => Navigator.of(context)
-                  .pushNamed(RouteGenerator.testPage),
+                  .pushNamed(RouteGenerator.iconPage),
             ),
           ],
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

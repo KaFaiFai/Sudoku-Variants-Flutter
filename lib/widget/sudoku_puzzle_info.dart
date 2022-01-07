@@ -60,7 +60,7 @@ class SudokuPuzzleInfo extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              padding: const EdgeInsets.all(20.0),
               child: puzzle.hasWon
                   ? const Icon(Icons.done, color: CONTRAST_COLOR, size: 40)
                   : null,

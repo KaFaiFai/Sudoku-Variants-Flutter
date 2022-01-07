@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
-import '../model/sudoku_puzzle.dart';
-import '../model/sudoku_symbol.dart';
-import '../repository/sudoku_puzzle_repository.dart';
-import '../routes.dart';
-import '../widget/sudoku_board_subgrid.dart';
-import '../widget/sudoku_puzzles_tabs.dart';
 
-class TestPage extends StatefulWidget {
-  const TestPage({Key? key}) : super(key: key);
+class IconPage extends StatefulWidget {
+  const IconPage({Key? key}) : super(key: key);
 
   @override
-  State<TestPage> createState() => _TestPageState();
+  State<IconPage> createState() => _IconPageState();
 }
 
-class _TestPageState extends State<TestPage> {
+class _IconPageState extends State<IconPage> {
   final widthLength = 8.0;
 
   @override
@@ -121,7 +115,7 @@ class _TestPageState extends State<TestPage> {
     }
     int num = (row / 2).floor() * count + (col / 2).floor();
     final chars = ["S", "U", "D", " ", "K", "O", " ", " ", " "];
-    return Container(
+    return SizedBox(
       child: Center(
           child: Text(chars[num],
               style: TextStyle(
