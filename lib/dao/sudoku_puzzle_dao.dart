@@ -19,8 +19,10 @@ class SudokuPuzzleDao {
     if (_duplicatePuzzles.isEmpty) {
       id = await db.insert(tableSudokuPuzzles, puzzle.toJson());
     } else {
-      id = await _updateByInitialBoard(
-          puzzle.copyWith(id: _duplicatePuzzles[0].id));
+      id = await _updateByInitialBoard(puzzle.copyWith(
+        id: _duplicatePuzzles[0].id,
+        savedBoard: _duplicatePuzzles[0].savedBoard,
+      ));
     }
     return puzzle.copyWith(id: id);
   }
