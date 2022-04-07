@@ -1,6 +1,7 @@
 # Sudoku Variants
 
 Challenging puzzles of Sudoku and its variants, made using Flutter
+Available on Google Play Store: https://play.google.com/store/apps/details?id=com.kafaifai.sudoku_variants
 
 ## Details
 
